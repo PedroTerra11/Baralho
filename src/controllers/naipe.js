@@ -1,4 +1,5 @@
 const db = [];
+let nextId = 1
 
 const model = (naipe, id = nextId++) => {
   if (naipe.nome != undefined && naipe.nome != "") {
@@ -10,7 +11,7 @@ const model = (naipe, id = nextId++) => {
 };
 
 const store = (body) => {
-  const novo = model(naipe);
+  const novo = model(body);
 
   if (novo) {
     db.push(novo);
@@ -43,3 +44,7 @@ const destroy = (id) => {
     db.splice(index, 1);
   }
 };
+
+module.exports = {
+    destroy, store, show, index, update
+}
